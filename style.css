@@ -1,0 +1,555 @@
+ body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: #f8fafc;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background: #111827;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+#company-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 160px); /* adjust based on header/footer */
+  padding: 1rem;
+  box-sizing: border-box;
+  gap: 2rem; /* 👈 spacing between company names */
+}
+
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+  width: min(60vw, 320px);
+  font-size: clamp(1.5rem, 3vw, 2.5rem); /* 👈 Auto-resize based on screen */
+}
+.card:hover {
+  transform: scale(1.03);
+  background: #f1f5f9;
+}
+
+#question-view {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.level {
+  margin-bottom: 1.5rem;
+}
+
+footer {
+  background: #e5e7eb;
+  text-align: center;
+  font-size: 0.85rem;
+  padding: 1rem;
+  color: #555;
+}
+.topics-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 160px);
+  gap: 2rem;
+}
+
+.topic-card {
+  font-size: clamp(1.5rem, 2.5vw, 2.8rem);
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.2s ease;
+  width: 320px;             /* ✅ fixed width */
+  height: 80px;             /* ✅ fixed height */
+  justify-content: flex-start;
+  box-sizing: border-box;
+  text-transform: uppercase;
+}
+
+.topic-card:hover {
+  transform: scale(1.03);
+  background-color: #f0f9ff;
+}
+
+.bullet {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #3b82f6;
+  display: inline-block;
+}
+.coming-soon {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 100px;
+  color: #2563eb;
+  animation: blink 1.2s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+.roadmap-btn {
+  display: inline-block;
+  background: #2563eb;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background 0.2s ease;
+}
+.roadmap-btn:hover {
+  background: #1d4ed8;
+}
+.roadmap-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem; /* 👈 Yeh line topics ke beech spacing deti hai */
+  padding: 3rem 1rem;
+}
+.roadmap-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 4px solid #3b82f6; /* 🔷 blue border */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  width: 320px;
+  font-size: clamp(1.3rem, 2.2vw, 2rem);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none; /* remove default link underline */
+}
+
+.roadmap-item:hover {
+  background: #e0f2ff; /* Light sky blue on hover */
+  border-color: #0ea5e9; /* Sky blue border on hover */
+  transform: scale(1.02);
+}
+.emoji {
+  font-size: 2rem;
+  width: 2.5rem;
+  text-align: center;
+}
+
+.topic-name {
+  flex: 1;
+}
+.bullet {
+  font-size: 1.5rem;
+  margin-right: 0.5rem; /* ✅ Adds clean space between emoji and text */
+  display: inline-block;
+}
+.topic-card {
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.topic-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3); /* 🔵 blue glow */
+}
+.topic-card:hover {
+  border: 2px solid #0ea5e9; /* Sky blue */
+}
+@keyframes pop {
+  0%   { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.bullet {
+  animation: pop 0.4s ease forwards;
+}
+.topic-card:active {
+  transform: scale(0.98);
+  background-color: #f0f9ff;
+}
+body {
+  background: linear-gradient(to bottom, #f0f4ff, #ffffff);
+}
+.topics-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+.topic-card {
+  width: 250px;
+  height: 90px;
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.2s ease;
+  border: 2px solid #3b82f6;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.topic-card:hover {
+  transform: translateY(-6px);
+  background: #e0f2ff;
+  border-color: #0ea5e9;
+}
+.topic-card {
+  width: 250px;  /* 3 per row approx */
+  height: 90px;
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.2s ease;
+  border: 2px solid #3b82f6;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.topic-card:hover {
+  transform: translateY(-6px);
+  background: #e0f2ff;
+  border-color: #0ea5e9;
+}
+
+
+
+
+.company-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  margin-right: 0.6rem;
+  vertical-align: middle;
+}
+.card {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  border: 2px solid #3b82f6;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #0ea5e9;
+  background: #f0f9ff;
+}
+
+.company-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  border: 2px solid #3b82f6;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #0ea5e9;
+  background: #f0f9ff;
+}
+.company-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+ 
+.card:hover {
+  transform: scale(1.06);
+  border-color: #0ea5e9;
+  background: #f0f9ff;
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.15),
+    0 0 12px rgba(14, 165, 233, 0.3); /* 💠 blue outer glow */
+}
+.roadmap-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border: 4px solid #3b82f6;
+  background: #fff;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.3s ease;
+  width: 320px;
+}
+
+.yt-link {
+  font-size: 1.4rem;
+  color: #2563eb;
+  text-decoration: none;
+  margin-left: auto;
+}
+
+.yt-link:hover {
+  color: #0ea5e9;
+}
+@media (max-width: 768px) {
+  .roadmap-item {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+  }
+  .yt-link {
+    margin-top: 0.5rem;
+  }
+}
+
+
+
+ /* Question container boxes */
+.question-box {
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  background-color: #f9f9f9;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* Easy box hover */
+.easy-box:hover {
+  box-shadow: 0 4px 12px rgba(0, 200, 0, 0.4);
+  background-color: #f0fff0;
+}
+
+/* Medium box hover */
+.medium-box:hover {
+  box-shadow: 0 4px 12px rgba(255, 165, 0, 0.4);
+  background-color: #fffaf0;
+}
+
+/* Hard box hover */
+.hard-box:hover {
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
+  background-color: #fff0f0;
+}
+
+/* Question list */
+.question-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Each question item */
+.question-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Colored dot */
+.difficulty-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Dot colors */
+.dot-easy {
+  background-color: green;
+}
+.dot-medium {
+  background-color: orange;
+}
+.dot-hard {
+  background-color: red;
+}
+
+/* Question link */
+.question-link {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.2s ease;
+}
+
+.question-link:hover {
+  color: #0077cc;
+}
+
+
+/* Center the question section */
+#question-view {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Optional: Center the heading too */
+#company-heading {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+/* imp_problem */
+.problem-card {
+  background: #f9f9f9;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+.problem-card a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+}
+.problem-index {
+  font-size: 0.9rem;
+  color: #888;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* important effecct */
+/* .problem-card {
+  background: #ffe6f0;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(255, 105, 180, 0.2);
+  transition: all 0.3s ease;
+  border: 1px solid #ffc6db;
+}
+
+.problem-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(255, 105, 180, 0.4);
+  background: #fff0f6;
+  cursor: pointer;
+} */
+ .problem-card {
+  background: #fff; /* Default is plain white */
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.problem-card:hover {
+  background: #fff0f6;
+  box-shadow: 0 8px 16px rgba(255, 105, 180, 0.4);
+  transform: translateY(-4px);
+  border-color: #ffc6db;
+  cursor: pointer;
+}
+
+.problem-card a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.problem-card:hover a {
+  color: #d81b60; /* Pink text on hover */
+  text-decoration: underline;
+}
+
+.problem-index {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.problem-card a {
+  text-decoration: none;
+  color: #d81b60;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.problem-card a:hover {
+  text-decoration: underline;
+}
+
+.problem-index {
+  font-size: 0.8rem;
+  color: #c2185b;
+}
